@@ -1,9 +1,14 @@
 
 function Weather() {
+    const weather = {
+        temperature: "21 celsius",
+        description: 'Broken Clouds',
+        weatherIcon: 'c( )p',
+    }
     return (
         <section className="weather">
             {/* This is to be replaced with the weather fetched from weather API */}
-            <h2>This is the Weather!</h2>
+            {weather.weatherIcon} - {weather.temperature} - {weather.description}
         </section>
     )
 }
