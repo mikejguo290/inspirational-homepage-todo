@@ -1,9 +1,13 @@
 
-function Todo(){
+function Todo(props){
+    const { text, isComplete } = props;
+    const completionClass = isComplete? 'todo completed': 'todo current';
     return (
-        <article className="todo">
+        <article className={completionClass}>
             {/* replace with actual data*/}
-            <h3>Stuff to do</h3>
+            <h3>{text}</h3>
+            <button>Remove</button>
+            <button>Done</button>
         </article>
     )
 }
