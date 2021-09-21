@@ -9,11 +9,11 @@ function Homepage () {
         <section className="homepage">
             <Weather />
             <InputTodos />
-            <TodosList />
+            <TodosList isCompleted={false} />
             <button>Previous Image</button> 
             <button>Next Image</button> 
             <br />
-            <TodosList />
+            <TodosList isCompleted={true} />
             <Quote />
         </section>
     );
