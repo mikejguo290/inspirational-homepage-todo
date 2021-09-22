@@ -14,7 +14,8 @@ const options = {
         deleteTodo: (state, action)=>{
             // Q.intended effect on state? A. delete todo object with the id in action.payload
             const { id } = action.payload;
-            state.todos.filter(todo=> todo.id !== id );
+            state.todos=state.todos.filter(todo => todo.id !== id ); 
+            // array.filter returns a new array! so to modify state, set state to result of calling state.filter.
         },
         completeTodo: (state, action)=>{
             //  set todo object's isCompleted attribute to true, with the id in action.payload
