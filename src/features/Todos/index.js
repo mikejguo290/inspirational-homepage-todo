@@ -1,15 +1,10 @@
 import Todo from '../../components/Todo';
+import { useSelector } from 'react-redux'
+import { selectTodos } from './todosSlice';
 
 function TodosList(props){
 
-    const todos = [
-        {id:1, text:'play guitar', isCompleted: false},
-        {id:2, text:'meal plan', isCompleted: false},
-        {id:3, text:'read', isCompleted: false},
-        {id:1, text:'draw', isCompleted: true},
-        {id:2, text:'learn Spanish', isCompleted: true},
-        {id:3, text:'gym', isCompleted: true},
-    ];
+    const todos = useSelector(selectTodos);
 
     // either get all todos and filter later, or useSelectors conditionally 
     const filteredItems = todos.filter(( todo )=> props.isCompleted === todo.isCompleted).map((todo)=>{
