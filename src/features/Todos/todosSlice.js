@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const options = {
     name:'todos',
-    initialState:{todos:[]}, // store todo in array. 
+    initialState:{todos:[]}, // store todo in array.  // state.todos.todos allow state.todos to be extended later if we decide to.
     reducers: {
         addTodo: (state, action)=>{
             // Q.when to dispatch action? A. when someone clicks add action and the action type is addTodo.
@@ -28,5 +28,9 @@ const options = {
 
 const todosSlice = createSlice(options);
 
+// export selectors - pure functions that select a part of state to return
+export const selectTodos = state => state.todos.todos; // returns list of todos.
+
+// export actions and reducers
 export const { addTodo, removeTodo, completeTodo } = todosSlice.actions;
 export default todosSlice.reducer;
