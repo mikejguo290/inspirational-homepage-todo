@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addTodo } from '../features/todosSlice'; // import action creator
+import { addTodo } from '../features/Todos/todosSlice'; // import action creator
 import { useDispatch } from 'react-redux';
 
 function InputTodos(){
