@@ -1,4 +1,4 @@
-import configureStore from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import todosReducer from '../features/Todos/todosSlice';
 import weatherReducer from '../features/Weather/weatherSlice';
 
@@ -7,6 +7,6 @@ const rootReducer = {
     weather: weatherReducer,
 }
 
-const store = configureStore(rootReducer);
+const store = configureStore({reducer: rootReducer});
 
 export default store;
