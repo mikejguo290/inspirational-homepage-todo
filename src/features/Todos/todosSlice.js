@@ -11,7 +11,7 @@ const options = {
             const { id, text, isCompleted } = action.payload;
             state.todos.push({id: id, text:text, isCompleted:isCompleted});
         }, 
-        removeTodo: (state, action)=>{
+        deleteTodo: (state, action)=>{
             // Q.intended effect on state? A. delete todo object with the id in action.payload
             const { id } = action.payload;
             state.todos.filter(todo=> todo.id !== id );
@@ -32,5 +32,5 @@ const todosSlice = createSlice(options);
 export const selectTodos = state => state.todos.todos; // returns list of todos.
 
 // export actions and reducers
-export const { addTodo, removeTodo, completeTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, completeTodo } = todosSlice.actions;
 export default todosSlice.reducer;
