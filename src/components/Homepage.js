@@ -1,13 +1,16 @@
 import Weather from '../features/Weather';
 import Quote from '../features/Quote';
 import Todos from '../features/Todos';
-
 import InputTodos from './InputTodos';
+
+import { useSelector } from 'react-redux';
+import { selectImageUrl } from '../features/Image/imageSlice'
 
 function Homepage () {
     /* homepage will have to have images state */
-    const imageURL = 'https://source.unsplash.com/random';
-    const background = `url(${imageURL})`;
+    const url = useSelector(selectImageUrl);
+    //const imageURL = 'https://source.unsplash.com/random';
+    const background = `url(${url})`;
     let style= {
         backgroundImage: background,
         backgroundSize:'cover',
