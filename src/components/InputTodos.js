@@ -14,9 +14,10 @@ function InputTodos(){
         // dispatch action to TodosSlice to add new todos
         const payload = {
             id:1, 
-            text:e.target.value, 
+            text:userInput, 
             isCompleted:false
-        } 
+        }
+        
         dispatch(addTodo(payload));
         // test code. 
         console.log(`add todo - ${userInput}`);
