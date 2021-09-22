@@ -1,7 +1,8 @@
-import Weather from './Weather';
+import Weather from '../features/Weather';
+import Quote from '../features/Quote';
+import Todos from '../features/Todos';
+
 import InputTodos from './InputTodos';
-import TodosList from './TodosList';
-import Quote from './Quote';
 
 function Homepage () {
     /* homepage will have to have images state */
@@ -16,11 +17,11 @@ function Homepage () {
         <section className="homepage" style={style}>
             <Weather />
             <InputTodos />
-            <TodosList isCompleted={false} />
+            <Todos isCompleted={false} />
             <button>Previous Image</button> 
             <button>Next Image</button> 
             <br />
-            <TodosList isCompleted={true} />
+            <Todos isCompleted={true} />
             <Quote />
         </section>
     );
