@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const options = {
     name: 'Weather',
-    initialState: { weather:{} },
+    initialState: { weather:{
+        temperature: '13 celsius',
+        description: 'cloudy',
+        weatherIcon: 'c()d'
+    }},
     reducers: {
         setWeather:(state, action) => {
             // set state weather with action.payload
@@ -17,6 +21,6 @@ const options = {
 }
 
 const weatherSlice = createSlice(options);
-
+export const selectWeather = state => state.weather.weather;
 export const { setWeather } = weatherSlice.actions;
 export default weatherSlice.reducer;
