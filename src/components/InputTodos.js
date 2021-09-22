@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { addTodo } from '../features/todosSlice'; // import action creator
+import { useDispatch } from 'react-redux';
+
 function InputTodos(){
     const [userInput, setUserInput ] = useState(''); // import useState hook and set default userInput to '';
+    const dispatch = useDispatch();
     const handleChange = (event) =>{
         const input = event.target.value; 
         setUserInput(input); // update UserInput with capture value from the event. 
@@ -8,7 +12,12 @@ function InputTodos(){
     const handleSubmit = (e)=>{
         e.preventDefault();
         // dispatch action to TodosSlice to add new todos
-
+        const payload = {
+            id:1, 
+            text:e.target.value, 
+            isCompleted:false
+        } 
+        dispatch(addTodo(payload));
         // test code. 
         console.log(`add todo - ${userInput}`);
         // clear userInput after submission
