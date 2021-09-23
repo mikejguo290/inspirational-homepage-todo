@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import weatherAPI from '../../api/weatherAPI';
-import weatherApi from '../../app/weatherAPI';
 
 export const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
@@ -9,25 +8,35 @@ export const fetchWeather = createAsyncThunk(
         return fetchedWeather;
     }
 )
-    
-
 
 const options = {
     name: 'Weather',
     initialState: { weather:{
-        temperature: '13 celsius',
-        description: 'cloudy',
-        weatherIcon: 'c()d'
-    }},
+            temperature: '',
+            description: '',
+            weatherIcon: ''
+        },
+        isLoading: false,
+        hasError: false,
+    },
     reducers: {
-        setWeather:(state, action) => {
-            // set state weather with action.payload
-            const { temperature, description, weatherIcon } = action.payload;
-            state.weather = {
-                temperature: temperature,
-                description: description,
-                weatherIcon: weatherIcon,
-            }
+        
+    },
+    extraReducers: {
+        [fetchWeather.fulfilled]:(state, action)=>{
+            state.isLoading = false;
+            state.hasError = false;
+            state.weather = action.payload;
+        },
+
+        [fetchWeather.pending]: (state)=>{
+            state.isLoading = true;
+            state.hasError = false;
+        },
+
+        [fetchWeather.rejected]:(state)=>{
+            state.isLoading = false;
+            state.hasError = true;
         }
     }
 }
