@@ -1,4 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import weatherAPI from '../../api/weatherAPI';
+import weatherApi from '../../app/weatherAPI';
+
+export const fetchWeather = createAsyncThunk(
+    'weather/fetchWeather',
+    async(arg, thunkAPI)=>{// payload creator makes async request to get data from API
+        const fetchedWeather = await weatherAPI.fetchWeather();
+        return fetchedWeather;
+    }
+)
+    
+
 
 const options = {
     name: 'Weather',
