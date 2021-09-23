@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
-import { selectQuote } from './quoteSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectQuote, fetchQuote } from './quoteSlice';
+import { useEffect } from 'react';
 
 function Quote(){
-    /*
-    // mock data for Quote.
-    const quote = {
-        text:'Beep … beep … beep.',
-        author:'Sputnik'
-    };
-    */
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        // useEffect call backs are synchronous! define and invoke the async function within body of call back
+        dispatch(fetchQuote()); // dispatch calling the thunk action creator = dispatching async thunk function. 
+    },[dispatch]);
     const quote = useSelector(selectQuote);
 
     return (
