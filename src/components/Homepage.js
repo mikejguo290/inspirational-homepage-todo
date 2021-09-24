@@ -5,20 +5,16 @@ import InputTodos from './InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImage, fetchImage } from '../features/Image/imageSlice'
-import imageAPI from '../api/imageAPI';
+import { selectImage, selectPageToFetch, fetchImage } from '../features/Image/imageSlice'
 
 function Homepage () {
     /* homepage will have to have images state */
     const dispatch = useDispatch();
+    const page = useSelector(selectPageToFetch);
     useEffect(()=>{
-        // test api call without dispatching to store
-        const getImage = async()=>{
-            const fetchedImage = await imageAPI.fetchImage();
-            return fetchedImage;
-        }
-        getImage();
-    },[dispatch])
+        // dispatch thunk action creator with arg set to the page of query response results to fetch. 
+        dispatch(fetchImage(page));
+    },[dispatch, page])
 
     const image = useSelector(selectImage);
     const background = `url(${image.url})`;
