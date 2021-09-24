@@ -1,19 +1,21 @@
-import { useSelector } from 'react-redux'
-import { selectWeather } from './weatherSlice';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { selectWeather, fetchWeather } from './weatherSlice';
 
 function Weather() {
-    /*
-    const weather = {
-        temperature: "21 celsius",
-        description: 'Broken Clouds',
-        weatherIcon: 'c( )p',
-    }
-    */
+    
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(fetchWeather());
+    },[dispatch]);
+
     const weather = useSelector(selectWeather);
+
     return (
         <section className="weather">
             {/* This is to be replaced with the weather fetched from weather API */}
-            {weather.weatherIcon} - {weather.temperature} - {weather.description}
+            {/* handle case of no weather data getting fetched gracefully! */}
+            <img src={weather.weatherIcon} alt="weatherIcon" />  <span>{weather.temperature}'C</span> - <span>{weather.description}</span>
         </section>
     )
 }
