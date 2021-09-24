@@ -4,8 +4,9 @@ import imageAPI from '../../api/imageAPI';
 export const fetchImage = createAsyncThunk(
     'image/fetchImage',
     async()=>{
-        const fetchedImage = await imageAPI.fetchImage();
-        return fetchedImage;
+        const fetchedImageData = await imageAPI.fetchImage();  
+        return fetchedImageData; 
+        // action.payload is going to fetch more than a list of image objs. 
     }
 );
 
@@ -28,7 +29,8 @@ const options = {
         [fetchImage.fulfilled]:(state,action)=>{
             state.isLoading = false;
             state.hasError = false;
-            state.imageURLs = action.payload; // action.payload has to contain list of urls
+            state.images = action.payload.images; 
+            state.totalPages = action.payload.totalPages; 
         },
         [fetchImage.pending]:(state)=>{
             state.isLoading = true;
@@ -51,5 +53,6 @@ const options = {
 const imageSlice = createSlice(options);
 
 export const selectImageIndex = state => state.image.imageIndex;
+export const selectPageToFetch = state => state.image.pageToFetch;
 export const selectImage = state => state.image.images[state.image.imageIndex];
 export default imageSlice.reducer;
