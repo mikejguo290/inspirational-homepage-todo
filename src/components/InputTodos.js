@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { addTodo } from '../features/Todos/todosSlice'; // import action creator
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 function InputTodos(){
     const [userInput, setUserInput ] = useState(''); // import useState hook and set default userInput to '';
@@ -13,7 +14,7 @@ function InputTodos(){
         e.preventDefault();
         // dispatch action to TodosSlice to add new todos
         const payload = {
-            id:1, 
+            id:uuidv4(), 
             text:userInput, 
             isCompleted:false
         }
@@ -28,7 +29,7 @@ function InputTodos(){
     return (
         <section className = "add-todo">
             <form onSubmit={handleSubmit}>
-                <label for="input-todos">
+                <label htmlFor="input-todos">
                     {/* specify input's value to control the element */}
                     <input 
                         id="input-todos" 
