@@ -17,7 +17,7 @@ function Homepage () {
     },[dispatch, page])
 
     const image = useSelector(selectImage);
-    const background = `url(${image.url})`;
+    const background = `url(${image.urls.regular})`;
     let style= {
         backgroundImage: background,
         backgroundSize:'cover',
