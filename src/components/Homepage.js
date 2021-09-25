@@ -5,7 +5,8 @@ import InputTodos from './InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImage, selectPageToFetch, fetchImage, selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
+import { selectImages, selectImageIndex, selectPageToFetch, fetchImage, 
+    selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
 
 function Homepage () {
     /* 
@@ -28,23 +29,28 @@ function Homepage () {
         backgroundImage: `url(${defaultImageURL})`,
         backgroundSize:'cover',
     }
-    
-    const image = useSelector(selectImage);
+    const currentIndex = useSelector(selectImageIndex);
+    const images = useSelector(selectImages)
+    const image = images[currentIndex];
 
     if (image !== undefined){ // image is undefined either on first render or when no image is returned from fetch. 
         // don't run the following code if image doesn't contain image object.
         const background = `url(${image.urls.regular})`;
         style.backgroundImage = background;
     }
-
+    const maxIndex = images.length-1;
     const handleClickNext = () =>{
         // this will change image.imageIndex, which will change the image fetched by selector selectImage.
         // if index is within range, get nextImage, else, get new page of results and set 
-        dispatch(getNextImage())
+        if(currentIndex<maxIndex){
+            dispatch(getNextImage());
+        }
     }
 
     const handleClickPrevious = () => {
-        dispatch(getPreviousImage())
+        if(currentIndex > 0){
+            dispatch(getPreviousImage());
+        }
     }
 
     return (
