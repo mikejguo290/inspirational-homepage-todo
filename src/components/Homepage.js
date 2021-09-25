@@ -5,7 +5,7 @@ import InputTodos from './InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImage, selectPageToFetch, fetchImage, selectLoadingStatus, selectErrorStatus } from '../features/Image/imageSlice'
+import { selectImage, selectPageToFetch, fetchImage, selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
 
 function Homepage () {
     /* 
@@ -37,13 +37,23 @@ function Homepage () {
         style.backgroundImage = background;
     }
 
+    const handleClickNext = () =>{
+        // this will change image.imageIndex, which will change the image fetched by selector selectImage.
+        // if index is within range, get nextImage, else, get new page of results and set 
+        dispatch(getNextImage())
+    }
+
+    const handleClickPrevious = () => {
+        dispatch(getPreviousImage())
+    }
+
     return (
         <section className="homepage" style={style}>
             <Weather />
             <InputTodos />
             <Todos isCompleted={false} />
-            <button>Previous Image</button> 
-            <button>Next Image</button> 
+            <button onClick={handleClickPrevious}>Previous Image</button> 
+            <button onClick={handleClickNext}>Next Image</button> 
             <br />
             <Todos isCompleted={true} />
             <Quote />

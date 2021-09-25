@@ -24,7 +24,16 @@ const options = {
         isLoading:false,
         hasError:false,
     },
-    reducers:{},
+    reducers:{
+        getNextImage : (state) => {
+            // increase imageIndex by 1.
+            state.imageIndex +=1;
+        },
+        getPreviousImage : (state) => {
+            // decrease imageIndex by 1.
+            state.imageIndex -=1;
+        }
+    },
     extraReducers:{
         [fetchImage.fulfilled]:(state,action)=>{
             state.isLoading = false;
@@ -57,4 +66,6 @@ export const selectPageToFetch = state => state.image.pageToFetch;
 export const selectImage = state => state.image.images[state.image.imageIndex];
 export const selectLoadingStatus = state => state.image.isLoading;
 export const selectErrorStatus = state => state.image.isError;
+
+export const { getNextImage, getPreviousImage } = imageSlice.actions;
 export default imageSlice.reducer;
