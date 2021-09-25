@@ -3,8 +3,8 @@ import imageAPI from '../../api/imageAPI';
 
 export const fetchImage = createAsyncThunk(
     'image/fetchImage',
-    async()=>{
-        const fetchedImageData = await imageAPI.fetchImage();  
+    async(page)=>{
+        const fetchedImageData = await imageAPI.fetchImage(page);  
         return fetchedImageData; 
         // action.payload is going to fetch more than a list of image objs. 
     }
@@ -15,10 +15,14 @@ const options = {
     initialState: {
         // mountain image 
         // 'https://images.unsplash.com/photo-1631551831518-b5b32d35f248'
-        images : [{url:'https://images.unsplash.com/photo-1631551831518-b5b32d35f248'}], // array of image objects
+        images : [{
+                urls:{
+                    regular:'https://images.unsplash.com/photo-1631551831518-b5b32d35f248'
+                }   
+        }], // array of image objects
 
-        pageToFetch: 1, // page fetched is 1 by default with the api, if nothing is specified. 
-        imageIndex: 0, // index of image url to get. maybe
+        pageToFetch: 2, // page fetched by api is 1 by default, if nothing is specified. 
+        imageIndex: 0, // index of image url to get.  Q. why can i change this?!?! 
         totalPages: 0, // total pages of results that can be fetched from query. pageToFetch cannot exceed this. 
 
         isLoading:false,

@@ -3,7 +3,8 @@ const accessKey = 'F3IT-ZZ3z3WQA1-WmIB5-M9M3cQ1VJkETxlJdZiqZVs';
 const imageAPI = {
     async fetchImage(pageToFetch){
         // search unsplash api with query 'mountain'
-        const url = `https://api.unsplash.com/search/photos?client_id=${accessKey}&query=mountain&page=${pageToFetch}`;
+        const url = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=${pageToFetch}&query=mountain`;
+        console.log(url);
         try{
             const response = await fetch(url, {
                 method: 'GET',
