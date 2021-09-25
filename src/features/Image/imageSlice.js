@@ -15,14 +15,10 @@ const options = {
     initialState: {
         // mountain image 
         // 'https://images.unsplash.com/photo-1631551831518-b5b32d35f248'
-        images : [{
-                urls:{
-                    regular:'https://images.unsplash.com/photo-1631551831518-b5b32d35f248'
-                }   
-        }], // array of image objects
+        images : [], // array of image objects - [ {urls: {regular: 'url to use for background'}} ]
 
-        pageToFetch: 2, // page fetched by api is 1 by default, if nothing is specified. 
-        imageIndex: 0, // index of image url to get.  Q. why can i change this?!?! 
+        pageToFetch: 2, // page fetched by api is 1 by default, if nothing is specified. starting on page 2 is better!
+        imageIndex: 0, // index of image url to get. 
         totalPages: 0, // total pages of results that can be fetched from query. pageToFetch cannot exceed this. 
 
         isLoading:false,
@@ -59,4 +55,6 @@ const imageSlice = createSlice(options);
 export const selectImageIndex = state => state.image.imageIndex;
 export const selectPageToFetch = state => state.image.pageToFetch;
 export const selectImage = state => state.image.images[state.image.imageIndex];
+export const selectLoadingStatus = state => state.image.isLoading;
+export const selectErrorStatus = state => state.image.isError;
 export default imageSlice.reducer;
