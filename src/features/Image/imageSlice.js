@@ -62,8 +62,8 @@ const options = {
 const imageSlice = createSlice(options);
 
 export const selectImageIndex = state => state.image.imageIndex;
+export const selectImages = state => state.image.images;
 export const selectPageToFetch = state => state.image.pageToFetch;
-export const selectImage = state => state.image.images[state.image.imageIndex];
 export const selectLoadingStatus = state => state.image.isLoading;
 export const selectErrorStatus = state => state.image.isError;
 
