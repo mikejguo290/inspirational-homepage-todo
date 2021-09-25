@@ -5,7 +5,7 @@ import InputTodos from './InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImages, selectImageIndex, selectPageToFetch, fetchImage, 
+import { selectImages, selectImageIndex, selectTotalPages,selectPageToFetch, fetchImage, 
     selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
 
 function Homepage () {
@@ -39,17 +39,29 @@ function Homepage () {
         style.backgroundImage = background;
     }
     const maxIndex = images.length-1;
+    const totalPages = useSelector(selectTotalPages);
     const handleClickNext = () =>{
         // this will change image.imageIndex, which will change the image fetched by selector selectImage.
         // if index is within range, get nextImage, else, get new page of results and set 
-        if(currentIndex<maxIndex){
+        if(currentIndex < maxIndex){
             dispatch(getNextImage());
+        }else{
+            //in case currentIndex === maxIndex, 
+            if(page < totalPages ){
+                // dispatch action that sets index to 0
+                console.log('fetch next page of results!');
+                // dispatch async thunk creator with higher page arg
+            }
         }
     }
 
     const handleClickPrevious = () => {
         if(currentIndex > 0){
             dispatch(getPreviousImage());
+        }else{
+            if(page> 0){
+                console.log('fetch previous page of results!');
+            }
         }
     }
 
