@@ -5,7 +5,7 @@ import InputTodos from './InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImages, selectImageIndex, selectTotalPages,selectPageToFetch, fetchImage, 
+import { selectImages, selectImageIndex, selectTotalPages,selectPage, fetchImage, 
     selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
 
 function Homepage () {
@@ -15,7 +15,7 @@ function Homepage () {
     to its use of selectors exported from imageSlice. 
     */
     const dispatch = useDispatch();
-    const page = useSelector(selectPageToFetch);
+    const page = useSelector(selectPage);
     useEffect(()=>{
         // dispatch thunk action creator with arg set to the page of query response results to fetch. 
         dispatch(fetchImage(page));
