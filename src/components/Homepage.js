@@ -51,6 +51,7 @@ function Homepage () {
                 // dispatch action that sets index to 0
                 console.log('fetch next page of results!');
                 // dispatch async thunk creator with higher page arg
+                dispatch(fetchImage(page+1));
             }
         }
     }
@@ -59,8 +60,9 @@ function Homepage () {
         if(currentIndex > 0){
             dispatch(getPreviousImage());
         }else{
-            if(page> 0){
+            if(page > 1){
                 console.log('fetch previous page of results!');
+                dispatch(fetchImage(page-1));
             }
         }
     }
