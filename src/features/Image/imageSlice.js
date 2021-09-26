@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import imageAPI from '../../api/imageAPI';
 
 export const fetchImage = createAsyncThunk(
@@ -7,7 +6,6 @@ export const fetchImage = createAsyncThunk(
     async(newPage, thunkAPI)=>{
         const fetchedImageData = await imageAPI.fetchImage(newPage);  
 
-        const dispatch = useDispatch();
         const store = thunkAPI.getState();
         const currentPage = store.image.page;
 
@@ -21,7 +19,7 @@ export const fetchImage = createAsyncThunk(
                 imageIndex: maxIndex,
                 page: newPage,
             }
-            dispatch(setIndexAndPage(payload)); // you can dispatch an action creator defined in the same file lower down!
+            thunkAPI.dispatch(setIndexAndPage(payload)); // you can dispatch an action creator defined in the same file lower down!
 
         }else if (newPage > currentPage){
             // dispatch action to set index to index 0 (first image of new page), and also set page
@@ -29,7 +27,7 @@ export const fetchImage = createAsyncThunk(
                 imageIndex: 0,
                 page: newPage,
             }
-            dispatch(setIndexAndPage(payload));
+            thunkAPI.dispatch(setIndexAndPage(payload));
         }
         
         return fetchedImageData; 
