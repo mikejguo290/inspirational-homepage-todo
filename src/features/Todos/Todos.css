@@ -1,15 +1,18 @@
 .todosContainer {
     width: 50%;
     margin: auto;
-    background-color:aliceblue;
+    background: rgba(245, 245, 245, 0.5);
     opacity:0.8;
     border:1px solid white;
     border-radius: 8px;
+    min-height:6rem;
 }
 
 .todos {
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     list-style-type: none;
+    min-height: 4rem;
 }
