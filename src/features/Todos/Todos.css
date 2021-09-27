@@ -1,0 +1,15 @@
+.todosContainer {
+    width: 50%;
+    margin: auto;
+    background-color:aliceblue;
+    opacity:0.8;
+    border:1px solid white;
+    border-radius: 8px;
+}
+
+.todos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style-type: none;
+}
