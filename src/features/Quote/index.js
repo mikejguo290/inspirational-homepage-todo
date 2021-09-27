@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectQuote, fetchQuote } from './quoteSlice';
 import { useEffect } from 'react';
+import './Quote.css'
 
 function Quote(){
     const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function Quote(){
 
     return (
         <section className="quote">
-            <h2>{quote.text}</h2>
+            <h3>{quote.text}</h3>
             <h2>- {quote.author}</h2>
         </section>)
     }
