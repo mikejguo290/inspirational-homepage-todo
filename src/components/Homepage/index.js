@@ -1,12 +1,12 @@
-import Weather from '../features/Weather';
-import Quote from '../features/Quote';
-import Todos from '../features/Todos';
-import InputTodos from './InputTodos';
+import Weather from '../../features/Weather';
+import Quote from '../../features/Quote';
+import Todos from '../../features/Todos';
+import InputTodos from '../InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectImages, selectImageIndex, selectTotalPages,selectPage, fetchImage, 
-    selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../features/Image/imageSlice'
+    selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../../features/Image/imageSlice'
 
 function Homepage () {
     /* 

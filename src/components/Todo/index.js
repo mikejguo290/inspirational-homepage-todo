@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteTodo, completeTodo } from '../features/Todos/todosSlice';
+import { deleteTodo, completeTodo } from '../../features/Todos/todosSlice';
 
 function Todo(props){
     const { id, text, isComplete } = props;
