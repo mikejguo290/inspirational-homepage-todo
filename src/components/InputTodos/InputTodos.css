@@ -1,0 +1,29 @@
+.add-todo {
+    width:50%;
+    margin: auto;
+    background: rgba(245, 245, 245, 0.5);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.add-todo h2 {
+    color:white;
+    text-align:center;
+}
+
+.add-todo input {
+    width: 100%;
+    text-align:center;
+    background-color:transparent; /* let background show through, instead of applying another 0.5 opaque background on top of add-todo*/
+    color:white;
+    caret-color: white;
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    border-bottom: 1px white solid;
+}
+
+/* remove input outline on focus */
+
+.add-todo input:focus {
+    outline: none;
+}

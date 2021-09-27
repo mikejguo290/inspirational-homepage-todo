@@ -1,6 +1,7 @@
 import Todo from '../../components/Todo';
 import { useSelector } from 'react-redux'
 import { selectTodos } from './todosSlice';
+import './Todos.css';
 
 function TodosList(props){
 
@@ -15,10 +16,12 @@ function TodosList(props){
     });
 
     return (
-        <ul> 
-            {/* replace with dynamically generated list when there is real data */}
-            {filteredItems}
-        </ul>
+        <section className='todosContainer'>
+            <ul className="todos"> 
+                {/* replace with dynamically generated list when there is real data */}
+                {filteredItems}
+            </ul>
+        </section>
     );
 }
 
