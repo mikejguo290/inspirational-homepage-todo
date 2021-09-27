@@ -1,0 +1,11 @@
+.weather{
+    display: flex;
+    color:white;
+    height: 70px;
+    align-items:flex-start;
+}
+
+.weather p {
+    font-size: 0.75em;
+    line-height:1em;
+}
