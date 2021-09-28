@@ -37,6 +37,7 @@ function InputTodos(){
                         type ='text' 
                         value = {userInput}
                         onChange = {handleChange}
+                        autocomplete= "off"
                     />
             </form>
         </section>
