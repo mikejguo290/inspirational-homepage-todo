@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { deleteTodo, completeTodo } from '../../features/Todos/todosSlice';
+import './Todo.css'
 
 function Todo(props){
     const { id, text, isComplete } = props;
-    const completionClass = isComplete? 'todo completed': 'todo current';
+    const completionClass = isComplete? 'completed': 'current';
     
     const dispatch = useDispatch();
 
@@ -16,12 +17,13 @@ function Todo(props){
     }
 
     return (
-        <article className={completionClass}>
-            {/* replace with actual data*/}
-            <h3>{text}</h3>
-            <button onClick={handleDelete}>Remove</button>
-            <button onClick={handleComplete}>Done</button>
-        </article>
+        <div className="todoContainer">
+            <button className="deleteButton" onClick={handleDelete}>Remove</button>
+            <button className="completeButton" onClick={handleComplete}>Done</button>
+            <article className={`todo ${completionClass}`}>
+                <p>{text}</p>
+            </article>
+        </div>
     )
 }
 
