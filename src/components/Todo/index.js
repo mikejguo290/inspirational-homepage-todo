@@ -3,8 +3,8 @@ import { deleteTodo, completeTodo } from '../../features/Todos/todosSlice';
 import './Todo.css'
 
 function Todo(props){
-    const { id, text, isComplete } = props;
-    const completionClass = isComplete? 'completed': 'current';
+    const { id, text, isCompleted } = props;
+    const completionClass = isCompleted? 'completed': 'current';
     
     const dispatch = useDispatch();
 
@@ -18,8 +18,8 @@ function Todo(props){
 
     return (
         <div className="todoContainer">
-            <button className="deleteButton" onClick={handleDelete}>Remove</button>
-            <button className="completeButton" onClick={handleComplete}>Done</button>
+            <button className={`deleteButton ${completionClass}`} onClick={handleDelete}>Remove</button>
+            <button className={`completeButton ${completionClass}`} onClick={handleComplete}>Done</button>
             <article className={`todo ${completionClass}`}>
                 <p>{text}</p>
             </article>
