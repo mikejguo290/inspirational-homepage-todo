@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, completeTodo } from '../../features/Todos/todosSlice';
 import './Todo.css'
 
 function Todo(props){
+    const [ activeTodo, setActiveTodo ] = useState(false); // allow Todo to track hover events, expressed with mouseEnter and mouseLeave.
     const { id, text, isCompleted } = props;
     const completionClass = isCompleted? 'completed': 'current';
     
@@ -16,10 +18,18 @@ function Todo(props){
         dispatch(completeTodo({id:id}));
     }
 
+    const handleMouseEnter = () => {
+        setActiveTodo(true);
+    }
+
+    const handleMouseLeave = () => {
+        setActiveTodo(false);
+    }
+
     return (
-        <div className="todoContainer">
-            <button className={`deleteButton ${completionClass}`} onClick={handleDelete}>Remove</button>
-            <button className={`completeButton ${completionClass}`} onClick={handleComplete}>Done</button>
+        <div className="todoContainer" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {activeTodo && <button className={`deleteButton ${completionClass}`} onClick={handleDelete}>Remove</button>}
+            {activeTodo && <button className={`completeButton ${completionClass}`} onClick={handleComplete}>Done</button>}
             <article className={`todo ${completionClass}`}>
                 <p>{text}</p>
             </article>
