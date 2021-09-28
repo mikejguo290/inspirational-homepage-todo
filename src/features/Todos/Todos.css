@@ -13,6 +13,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-content: center;
     list-style-type: none;
     min-height: 4rem;
+    gap:0.5em;
 }
