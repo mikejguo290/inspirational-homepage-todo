@@ -2,7 +2,9 @@
     display: flex;
     color:white;
     height: 70px;
-    align-items:flex-start;
+    align-items:flex-end;
+    justify-content: center;
+    margin: 1rem 0rem;
 }
 
 .weather p {
