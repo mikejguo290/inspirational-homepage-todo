@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { addTodo } from '../../features/Todos/todosSlice'; // import action creator
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import './InputTodos.css';
+
 
 function InputTodos(){
     const [userInput, setUserInput ] = useState(''); // import useState hook and set default userInput to '';
@@ -29,16 +31,13 @@ function InputTodos(){
     return (
         <section className = "add-todo">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="input-todos">
-                    {/* specify input's value to control the element */}
+                <h2>What's on your mind today?</h2>
                     <input 
                         id="input-todos" 
                         type ='text' 
-                        placeholder="What's on your mind?"
                         value = {userInput}
                         onChange = {handleChange}
                     />
-                </label>
             </form>
         </section>
     );
