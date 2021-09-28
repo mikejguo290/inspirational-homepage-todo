@@ -1,3 +1,4 @@
+import './Homepage.css'
 import Weather from '../../features/Weather';
 import Quote from '../../features/Quote';
 import Todos from '../../features/Todos';
@@ -68,15 +69,25 @@ function Homepage () {
     }
 
     return (
-        <section className="homepage" style={style}>
-            <Weather />
-            <InputTodos />
-            <Todos isCompleted={false} />
-            <button onClick={handleClickPrevious}>Previous Image</button> 
-            <button onClick={handleClickNext}>Next Image</button> 
-            <br />
-            <Todos isCompleted={true} />
-            <Quote />
+        <section className="Homepage" style={style}>
+            <section className = 'header'>
+                <Weather />
+                <InputTodos />
+            </section>
+
+            <section className="main">
+                <section className = 'currentTodos'>
+                    <button onClick={handleClickPrevious}>Prev</button>
+                    <Todos isCompleted={false} /> 
+                    <button onClick={handleClickNext}>Next</button> 
+                </section>
+                <section className = 'currentTodos'>
+                    <Todos isCompleted={true} />
+                </section>
+            </section>
+            <section className='footer'>
+                <Quote />
+            </section>
         </section>
     );
 }
