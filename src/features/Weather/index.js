@@ -17,7 +17,7 @@ function Weather() {
             {/* handle case of no weather data getting fetched gracefully! */}
             <img class="weather-icon" src={weather.weatherIcon} alt="weatherIcon" />  
             <div>
-                <h2>{weather.temperature}'C</h2>
+                <h2>{weather.temperature}°C</h2>
                 <p>{weather.description}</p>
             </div>
         </section>
