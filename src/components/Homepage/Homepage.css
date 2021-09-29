@@ -18,6 +18,9 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 1.5rem;
+
+    overflow: scroll;
+
 }
 
 .todosList {
@@ -28,5 +31,18 @@
 }
 
 .footer {
-    margin-bottom: 2em;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#prev {
+    position:fixed;
+    top: 35%;
+    left: 1.5em;
+}
+
+#next {
+    position:fixed;
+    top: 35%;
+    right: 1.5em;
 }
