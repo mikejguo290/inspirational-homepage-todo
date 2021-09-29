@@ -19,8 +19,15 @@
     justify-content: flex-start;
     gap: 1.5rem;
 
-    overflow: scroll;
+    /* stop the browser from showing a scroll bar that takes up width. */
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    scrollbar-color: transparent;
+    overflow-y: scroll; 
+}
 
+.main::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 
 .todosList {
