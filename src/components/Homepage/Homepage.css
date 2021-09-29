@@ -32,8 +32,8 @@
 
 .todosList {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
     width: 100%;
 }
 
@@ -43,15 +43,16 @@
 }
 
 #prev {
-    position:fixed;
-    top: 35%;
-    left: 22%;
+    position:sticky;
+    top: 1rem;
+    margin-right:0.8rem;
+   
 }
 
 #next {
-    position:fixed;
-    top: 35%;
-    right: 22%;;
+    position:sticky;
+    top: 1rem;
+    margin-left:0.8rem;
 }
 
 
