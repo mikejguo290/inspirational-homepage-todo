@@ -38,11 +38,23 @@
 #prev {
     position:fixed;
     top: 35%;
-    left: 1.5em;
+    left: 22%;
 }
 
 #next {
     position:fixed;
     top: 35%;
-    right: 1.5em;
+    right: 22%;;
+}
+
+
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-36 { font-size: 36px; }
+
+#prev:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+#next:hover{
+    color: rgba(255, 255, 255, 1);
 }
