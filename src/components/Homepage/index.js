@@ -76,12 +76,12 @@ function Homepage () {
             </section>
 
             <section className="main">
-                <section className = 'currentTodos'>
+                <section className = 'todosList'>
                     <button onClick={handleClickPrevious}>Prev</button>
                     <Todos isCompleted={false} /> 
                     <button onClick={handleClickNext}>Next</button> 
                 </section>
-                <section className = 'currentTodos'>
+                <section className = 'todosList'>
                     <Todos isCompleted={true} />
                 </section>
             </section>
