@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectQuote, fetchQuote } from './quoteSlice';
+import { selectQuote, fetchQuote, selectLoadingStatus, selectErrorStatus } from './quoteSlice';
 import { useEffect } from 'react';
 import './Quote.css'
 
@@ -12,11 +12,26 @@ function Quote(){
     },[dispatch]);
     const quote = useSelector(selectQuote);
 
-    return (
-        <section className="quote">
-            <h3>{quote.text}</h3>
-            <h2>- {quote.author}</h2>
-        </section>)
+    const loading = useSelector(selectLoadingStatus);
+    const quoteError = useSelector(selectErrorStatus);
+
+    if(loading){
+        return (
+            <section className="quote">
+                <p>Loading ...</p>
+            </section>)
+    }else if(quoteError){
+        return (
+            <section className="quote">
+                <p>Error! {quoteError.message}</p>
+            </section>)
+    }else{
+        return (
+            <section className="quote">
+                <h3>{quote.text}</h3>
+                <h2>- {quote.author}</h2>
+            </section>)
+        }
     }
 
 export default Quote;

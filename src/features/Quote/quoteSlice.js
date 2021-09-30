@@ -4,9 +4,16 @@ import quotesAPI from '../../api/quotesAPI';
 export const fetchQuote = createAsyncThunk(
     'quote/fetchQuote', // name the action types created 
      async(arg, thunkAPI)=>{ // async call back to run 
-        const fetchedQuote = await quotesAPI.fetchQuoteOfTheDay();
-        return fetchedQuote;
-     }
+        try{
+            const fetchedQuote = await quotesAPI.fetchQuoteOfTheDay();
+            return fetchedQuote;
+        }catch(error){
+            const err = {}
+            err.name = 'quotes API request failed'
+            err.message = 'quotes API request failed'
+            return thunkAPI.rejectWithValue(err);
+        }    
+    }
 );
 
 const options = {
@@ -39,9 +46,9 @@ const options = {
             state.isLoading = true;
             state.hasError = false;
         },
-        [fetchQuote.rejected]:(state)=>{
+        [fetchQuote.rejected]:(state,action)=>{
             state.isLoading = false;
-            state.hasError = true;
+            state.hasError = action.payload;
         },
     }
 }
@@ -49,5 +56,7 @@ const options = {
 const quoteSlice = createSlice(options);
 
 export const selectQuote = state => state.quote.quote; 
+export const selectLoadingStatus = state => state.quote.isLoading;
+export const selectErrorStatus = state => state.quote.hasError;
 
 export default quoteSlice.reducer;

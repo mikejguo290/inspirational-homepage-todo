@@ -1,7 +1,7 @@
 const quotesAPI = {
     // fetch quote from they said so API, 
     async fetchQuoteOfTheDay(){
-        try{
+        
             const url = `https://cors-anywhere.herokuapp.com/https://quotes.rest/qod?category=inspire`;
             const response = await fetch(url, {
                 method:'GET',
@@ -24,9 +24,6 @@ const quotesAPI = {
                 throw new Error('Request has failed!');
             }
 
-        }catch(error){
-            console.log(error);
-        }
     }
 }
 
