@@ -12,15 +12,22 @@ function Weather() {
     const weather = useSelector(selectWeather);
     const loading = useSelector(selectLoadingStatus);
     const error = useSelector(selectErrorStatus);
+
     if(loading){
-        return <p>Loading weather data</p>
+        return (
+            <section className="weather">
+                <p>Loading weather data</p>
+            </section>
+        );
     }else if(error){
-        return <p>Error! Weather data failed to load</p>
+        return (
+            <section className="weather">
+                <p>Error! {error.message}</p>
+            </section>
+        );
     }else{
         return (
             <section className="weather">
-                {/* This is to be replaced with the weather fetched from weather API */}
-                {/* handle case of no weather data getting fetched gracefully! */}
                 <img className="weather-icon" src={weather.weatherIcon} alt="weatherIcon" />  
                 <div>
                     <h2>{weather.temperature}°C</h2>
