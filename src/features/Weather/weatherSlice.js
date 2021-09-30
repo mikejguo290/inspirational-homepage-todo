@@ -4,8 +4,15 @@ import weatherAPI from '../../api/weatherAPI';
 export const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
     async(arg, thunkAPI)=>{// payload creator makes async request to get data from API
-        const fetchedWeather = await weatherAPI.fetchWeather();
-        return fetchedWeather;
+        try{
+            const fetchedWeather = await weatherAPI.fetchWeather();
+            return fetchedWeather;
+        }catch(error){
+            const err ={}
+            err.name='weather API request failed';
+            err.message='open weather API request failed'; // or error.message if that is good enough!
+            return thunkAPI.rejectWithValue(err);
+        }
     }
 )
 
@@ -34,9 +41,9 @@ const options = {
             state.hasError = false;
         },
 
-        [fetchWeather.rejected]:(state)=>{
+        [fetchWeather.rejected]:(state, action)=>{
             state.isLoading = false;
-            state.hasError = true;
+            state.hasError = action.payload;
         }
     }
 }
