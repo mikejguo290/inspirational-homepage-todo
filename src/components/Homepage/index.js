@@ -6,7 +6,7 @@ import InputTodos from '../InputTodos';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectImages, selectImageIndex, selectTotalPages,selectPage, fetchImage, 
+import { selectImages, selectImageIndex, selectTotalPages,selectPage, fetchImage, setPage,
     selectLoadingStatus, selectErrorStatus, getNextImage, getPreviousImage } from '../../features/Image/imageSlice'
 
 function Homepage () {
@@ -20,7 +20,7 @@ function Homepage () {
     useEffect(()=>{
         // dispatch thunk action creator with arg set to the page of query response results to fetch. 
         dispatch(fetchImage(page));
-    },[dispatch, page])
+    },[dispatch,page])
 
     // if no image is fetched - const image = useSelector(selectImage); => undefined. 
     const defaultImageURL = 'https://images.unsplash.com/photo-1631551831518-b5b32d35f248';
@@ -52,7 +52,8 @@ function Homepage () {
                 // dispatch action that sets index to 0
                 console.log('fetch next page of results!');
                 // dispatch async thunk creator with higher page arg
-                dispatch(fetchImage(page+1));
+                const payload = {page:page+1}
+                dispatch(setPage(payload));
             }
         }
     }
@@ -63,7 +64,8 @@ function Homepage () {
         }else{
             if(page > 1){
                 console.log('fetch previous page of results!');
-                dispatch(fetchImage(page-1));
+                const payload = {page:page-1}
+                dispatch(setPage(payload));
             }
         }
     }
