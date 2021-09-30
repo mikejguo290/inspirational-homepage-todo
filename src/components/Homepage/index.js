@@ -77,11 +77,11 @@ function Homepage () {
 
             <section className="main">
                 <section className = 'todosList'>
-                    <span id="prev" class="material-icons md-light md-36 md-inactive" onClick={handleClickPrevious}>
+                    <span id="prev" className="material-icons md-light md-36 md-inactive" onClick={handleClickPrevious}>
                         arrow_back_ios
                     </span>
                     <Todos isCompleted={false} />
-                    <span id="next" class="material-icons md-light md-36 md-inactive" onClick={handleClickNext}>
+                    <span id="next" className="material-icons md-light md-36 md-inactive" onClick={handleClickNext}>
                         arrow_forward_ios
                     </span>
                 </section>
