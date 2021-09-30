@@ -10,7 +10,7 @@ export const fetchWeather = createAsyncThunk(
 )
 
 const options = {
-    name: 'Weather',
+    name: 'weather',
     initialState: { weather:{
             temperature: '',
             description: '',
@@ -44,4 +44,8 @@ const options = {
 const weatherSlice = createSlice(options);
 export const selectWeather = state => state.weather.weather;
 export const { setWeather } = weatherSlice.actions;
+
+export const selectLoadingStatus = state => state.weather.isLoading;
+export const selectErrorStatus = state => state.weather.hasError;
+
 export default weatherSlice.reducer;
