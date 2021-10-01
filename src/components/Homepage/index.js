@@ -22,6 +22,9 @@ function Homepage () {
         dispatch(fetchImage(page));
     },[dispatch,page])
 
+    const loading = useSelector(selectLoadingStatus);
+    const error = useSelector(selectErrorStatus);
+
     // if no image is fetched - const image = useSelector(selectImage); => undefined. 
     const defaultImageURL = 'https://images.unsplash.com/photo-1631551831518-b5b32d35f248';
     
@@ -30,17 +33,26 @@ function Homepage () {
         backgroundImage: `url(${defaultImageURL})`,
         backgroundSize:'cover',
     }
+
     const currentIndex = useSelector(selectImageIndex);
     const images = useSelector(selectImages)
     const image = images[currentIndex];
 
-    if (image !== undefined){ // image is undefined either on first render or when no image is returned from fetch. 
+    
+    // set background image to different values depending on result of of api call.
+    if(error){
+        style.backgroundImage = 'url(/errorImage.jpg)';
+    }else if(loading){
+        style.backgroundImage = 'url(/loadingImage.jpg)';
+    }else if (image !== undefined){ // image is undefined either on first render or when no image is returned from fetch. 
         // don't run the following code if image doesn't contain image object.
         const background = `url(${image.urls.regular})`;
         style.backgroundImage = background;
     }
+
     const maxIndex = images.length-1;
     const totalPages = useSelector(selectTotalPages);
+
     const handleClickNext = () =>{
         // this will change image.imageIndex, which will change the image fetched by selector selectImage.
         // if index is within range, get nextImage, else, get new page of results and set 
