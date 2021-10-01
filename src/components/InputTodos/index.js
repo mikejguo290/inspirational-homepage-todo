@@ -15,17 +15,16 @@ function InputTodos(){
     const handleSubmit = (e)=>{
         e.preventDefault();
         // dispatch action to TodosSlice to add new todos
-        const payload = {
-            id:uuidv4(), 
-            text:userInput, 
-            isCompleted:false
+        if(userInput){
+            const payload = {
+                id:uuidv4(), 
+                text:userInput, 
+                isCompleted:false
+            }
+            dispatch(addTodo(payload));
+            // clear userInput after submission
+            setUserInput('');    
         }
-        
-        dispatch(addTodo(payload));
-        // test code. 
-        console.log(`add todo - ${userInput}`);
-        // clear userInput after submission
-        setUserInput('');
     }
 
     return (
