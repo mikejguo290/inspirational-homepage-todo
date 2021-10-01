@@ -28,6 +28,7 @@
     right:3.7em;
     top:-0.6em;
     z-index:2;
+    border:1px solid rgba(245, 1, 1);
 }
 
 .completeButton {
@@ -41,6 +42,7 @@
     right:-0.8em;
     top:-0.6em;
     z-index:2;
+    border:1px solid rgba(56, 187, 247);
 }
 
 /* once the task is completed, the todo and two buttons turn gray. */
