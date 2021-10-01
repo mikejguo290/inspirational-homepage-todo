@@ -4,32 +4,40 @@ import imageAPI from '../../api/imageAPI';
 export const fetchImage = createAsyncThunk(
     'image/fetchImage',
     async(newPage, thunkAPI)=>{
-        const fetchedImageData = await imageAPI.fetchImage(newPage);  
+        try {
+            const fetchedImageData = await imageAPI.fetchImage(newPage);  
 
-        const store = thunkAPI.getState();
-        const previousPage = store.image.previousPage;
-
-        const maxIndex = fetchedImageData.images.length-1;
-
-        // set imageIndex and also updates page prior to populating store with new image objects. 
-        if (newPage < previousPage){
-            // newPage is smaller than page
-            // dispatch action to set index to last index of previous page's images, and also set page
-            const payload = {
-                imageIndex: maxIndex,
+            const store = thunkAPI.getState();
+            const previousPage = store.image.previousPage;
+    
+            const maxIndex = fetchedImageData.images.length-1;
+    
+            // set imageIndex and also updates page prior to populating store with new image objects. 
+            if (newPage < previousPage){
+                // newPage is smaller than page
+                // dispatch action to set index to last index of previous page's images, and also set page
+                const payload = {
+                    imageIndex: maxIndex,
+                }
+                thunkAPI.dispatch(setIndex(payload)); // you can dispatch an action creator defined in the same file lower down!
+    
+            }else if (newPage > previousPage){
+                // dispatch action to set index to index 0 (first image of new page), and also set page
+                const payload = {
+                    imageIndex: 0,
+                }
+                thunkAPI.dispatch(setIndex(payload));
             }
-            thunkAPI.dispatch(setIndex(payload)); // you can dispatch an action creator defined in the same file lower down!
+            return fetchedImageData; 
+            // action.payload is going to fetch more than a list of image objs. 
 
-        }else if (newPage > previousPage){
-            // dispatch action to set index to index 0 (first image of new page), and also set page
-            const payload = {
-                imageIndex: 0,
+        }catch(error){
+            const err = {
+                name:'image request failed',
+                message:'unsplash api request has failed',
             }
-            thunkAPI.dispatch(setIndex(payload));
+            return thunkAPI.rejectWithValue(err);
         }
-        
-        return fetchedImageData; 
-        // action.payload is going to fetch more than a list of image objs. 
     }
 );
 
@@ -79,9 +87,9 @@ const options = {
             state.isLoading = true;
             state.hasError = false;
         },
-        [fetchImage.rejected]:(state)=>{
+        [fetchImage.rejected]:(state, action)=>{
             state.isLoading = false;
-            state.hasError = true;
+            state.hasError = action.payload;
         },
     },
 }
