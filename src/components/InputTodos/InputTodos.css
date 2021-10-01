@@ -19,6 +19,7 @@
     caret-color: white;
     font-size: 1.25rem; /* 20px */
     font-weight: bold;
+    border:none; /* gets rid of all border around a text input before setting border bottom. */
     border-bottom: 1px white solid;
 }
 
