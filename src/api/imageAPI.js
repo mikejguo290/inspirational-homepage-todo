@@ -5,7 +5,7 @@ const imageAPI = {
         // search unsplash api with query 'mountain'
         const url = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=${pageToFetch}&query=mountain`;
         console.log(url);
-        try{
+        
             const response = await fetch(url, {
                 method: 'GET',
                 headers:{
@@ -16,6 +16,7 @@ const imageAPI = {
 
                 const jsonResponse = await response.json();
                 // create object to return, this will become action.payload
+                console.log('making an api call!')
                 console.log(jsonResponse);
                 // 1. define general structure of slice , e.g. images go into array of objects. 
                 // 2. return objects with properties set with jsonResponse.  
@@ -40,9 +41,7 @@ const imageAPI = {
             }else{
                 throw new Error('Request has failed!')
             }
-        }catch(error){
-            console.log(error);
-        }    
+       
     }
 }
 
