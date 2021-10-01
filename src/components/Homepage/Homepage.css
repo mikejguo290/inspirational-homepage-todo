@@ -56,13 +56,15 @@
 }
 
 
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-light.md-inactive { 
+    color: rgba(255, 255, 255, 0.8);
+}
 .material-icons.md-36 { font-size: 36px; }
 
 #prev:hover {
-    color: rgba(255, 255, 255, 1);
+    color: white;
 }
 
 #next:hover{
-    color: rgba(255, 255, 255, 1);
+    color: white;
 }
