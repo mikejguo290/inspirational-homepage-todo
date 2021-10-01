@@ -18,7 +18,6 @@ const quotesAPI = {
                     author: fetchedQuote.author,
                 }
 
-                console.log(quote);
                 return quote;
             }else{
                 throw new Error('Request has failed!');
