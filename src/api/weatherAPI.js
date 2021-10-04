@@ -1,9 +1,8 @@
-const apiKey = '68f0e305a7c7de98fc11d2bf9d32994c';
 
 const weatherAPI = {
     async fetchWeather(){
         
-            const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=${apiKey}`
+            const url = `/.netlify/functions/weather`;
             const response = await fetch(url,{
                 method:'GET',
                 headers: {
