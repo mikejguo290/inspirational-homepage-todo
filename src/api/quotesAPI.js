@@ -2,7 +2,7 @@ const quotesAPI = {
     // fetch quote from they said so API, 
     async fetchQuoteOfTheDay(){
         
-            const url = `https://cors-anywhere.herokuapp.com/https://quotes.rest/qod?category=inspire`;
+            const url = `/.netlify/functions/quotes`;
             const response = await fetch(url, {
                 method:'GET',
                 headers: {
