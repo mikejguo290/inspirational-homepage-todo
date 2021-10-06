@@ -50,7 +50,7 @@ The project  React/Redux development process:
 - Users can mark goals as complete
 
 ## Usage
-![Usage Demonstration gif](./img/screenshot.png)
+![Usage Demonstration gif](./images/todo_demo.gif)
 <!-- If you have screenshots you'd like to share, include them here. -->
 gif demo. 
 ## Screenshots
