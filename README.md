@@ -52,9 +52,8 @@ The project  React/Redux development process:
 ## Usage
 ![Usage Demonstration gif](./images/todo_demo.gif)
 <!-- If you have screenshots you'd like to share, include them here. -->
-gif demo. 
 ## Screenshots
-view of progression from initial wireframe to finalized app screenshot
+From initial wireframe to finalized app.
 
 ![Wireframe screenshot](./images/wireframe_screenshot.png)
 
