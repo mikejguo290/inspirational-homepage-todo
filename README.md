@@ -50,8 +50,9 @@ The project  React/Redux development process:
 - Users can mark goals as complete
 
 ## Usage
-![Usage Demonstration gif](https://user-images.githubusercontent.com/4690014/142781644-9a278963-95e5-42c7-aefa-e6925f675f27.mov)
-https://user-images.githubusercontent.com/4690014/142781644-9a278963-95e5-42c7-aefa-e6925f675f27.mov
+
+https://user-images.githubusercontent.com/4690014/142783176-54a40422-d4c5-466d-9344-6778c2e9f72c.mov
+
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Screenshots
