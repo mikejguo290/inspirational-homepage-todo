@@ -50,6 +50,7 @@ The project  React/Redux development process:
 - Users can mark goals as complete
 
 ## Usage
+#### Click anywhere on the video below to play the demo
 
 https://user-images.githubusercontent.com/4690014/142783176-54a40422-d4c5-466d-9344-6778c2e9f72c.mov
 
